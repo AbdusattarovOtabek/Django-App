@@ -1,0 +1,255 @@
+{% extends 'pagesapp/base.html' %}
+{% load static %}
+{% block home %}
+<style>
+
+  :root {
+ --header-height: 3rem;
+  --nav-width: 168px;
+  --first-color: #009dff;
+  --first-color-light: rgba(255, 255, 255, 0.483);
+  --white-color: #F7F6FB;
+  --body-font: 'Nunito', sans-serif;
+  --normal-font-size: 1rem;
+  --z-fixed: 100;
+  --maximum-blue-green_10: hsla(185, 75%, 45%, 0.1);
+  --rich-black-fogra-29: hsl(217, 28%, 9%);
+  --gray-x-11-gray: hsl(0, 0%, 74%);
+  --oxford-blue_60: hsla(230, 41%, 14%, 0.6);
+  --bittersweet: #38a6ebc3;
+  --smoky-black: rgb(7, 6, 1);
+  --gainsboro: hsl(0, 0%, 88%);
+  --black_90: hsla(0, 0%, 0%, 0.9);
+  --cultured: hsl(200, 12%, 95%);
+  --salmon: hsl(5, 100%, 73%);
+  --white: hsl(0, 0%, 100%);
+  --black: hsl(0, 0%, 0%);
+  --onyx: hsl(0, 0%, 27%);
+  --ff-roboto: 'Roboto', sans-serif;
+  --ff-josefin-sans: 'Josefin Sans', sans-serif;
+  --transition-1: 0.25s ease;
+  --transition-2: 0.5s ease;
+  --cubic-out: cubic-bezier(0.51, 0.03, 0.64, 0.28);
+  --cubic-in: cubic-bezier(0.33, 0.85, 0.56, 1.02);
+  --section-padding: 60px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li { list-style: none; }
+
+a { text-decoration: none; }
+
+a,
+img,
+span,
+table,
+tbody,
+button,
+ion-icon { display: block; }
+
+button { cursor: pointer; }
+
+html {
+  font-family: var(--ff-josefin-sans);
+  font-size: 10px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--white);
+  font-size: 1.6rem;
+  padding-block-start: 90px;
+}
+
+.h1,
+.h2,
+.h3,
+.h4 { color: var(--rich-black-fogra-29); }
+
+.h1 {
+  font-size: var(--fs-1);
+  font-weight: var(--fw-300);
+  line-height: 1.5;
+}
+
+.h2 { font-size: var(--fs-2); }
+
+.h3 { font-size: var(--fs-4); }
+
+.h4 {
+  font-size: var(--fs-5);
+  text-transform: uppercase;
+}
+
+.has-scrollbar > li {
+  min-width: 100%;
+  scroll-snap-align: start;
+}
+
+.has-scrollbar::-webkit-scrollbar { height: 10px; }
+
+.has-scrollbar::-webkit-scrollbar-track {
+  background: var(--white);
+  border-radius: 20px;
+  outline: 2px solid var(--bittersweet);
+}
+
+.has-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--bittersweet);
+  border: 2px solid var(--white);
+  border-radius: 20px;
+}
+
+.has-scrollbar::-webkit-scrollbar-button { width: calc(25% - 40px); }
+
+.card-banner {
+  background: var(--cultured);
+  position: relative;
+  height: 350px;
+  overflow: hidden;
+  border-radius:15px 15px 0px 0px;
+}
+
+.image-contain {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition: var(--transition-2);
+}
+
+.product-card:is(:hover, :focus) .image-contain { transform: scale(1.05); }
+
+.card-badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: var(--bittersweet);
+  color: var(--white);
+  padding: 5px 15px;
+  font-family: var(--ff-roboto);
+  font-size: var(--fs-7);
+  border-radius: 25px;
+}
+
+
+.product-card:is(:hover, :focus) .card-action-list {
+  right: 20px;
+  opacity: 1;
+}
+
+.card-action-btn ion-icon { --ionicon-stroke-width: 30px; }
+
+.card-action-btn:is(:hover, :focus) {
+  background: var(--bittersweet);
+  color: var(--white);
+}
+
+
+
+.card-action-btn:is(:hover, :focus) + .card-action-tooltip { opacity: 1; }
+
+.card-content {
+  padding: 24px 15px 0;
+  text-align: center;
+}
+
+
+
+.card-cat-link {
+  display: inline-block;
+  color: inherit;
+  transition: var(--transition-1);
+}
+
+
+.product-card .card-title { margin-bottom: 12px; }
+
+.product-card .card-title > a {
+  color: inherit;
+  transition: var(--transition-1);
+}
+
+.product .section-title {
+  text-align: center;
+  margin-bottom: 25px;
+}
+.card-content{
+  background-color:#38a6ebc3;
+  border-radius: 0px 0px 12px 12px;
+  height: 100px;
+}
+.card-title,
+.card-cat,
+.card-price{
+  margin-top: -8px;
+}
+
+.product-list {
+ display: flex;
+ text-align: center;
+ justify-content:space-between;
+ flex-wrap: wrap;
+ max-width: 1200px;
+}
+.product-item{
+  width: 33%;
+  height: auto;
+  gap: 40px 20px;
+  padding-bottom: 50px;
+}
+
+
+@media (min-width: 575px) {
+  .product-list{
+    max-width: 1100px;
+  }
+  .product-item{
+    width: 30%;
+  }
+
+    body{
+    margin: calc(var(--header-height) + 3rem) 0 0 0;
+    padding-left: calc(var(--nav-width) + 3rem);
+  }
+}
+</style>
+{% block title %}Product{% endblock %}
+<ul class="product-list">
+  {% for p in productpost %}
+  <li class="product-item">
+    <div class="product-card">
+      <figure class="card-banner">
+        {% if p.product_img %}
+        <img src="{{ p.product_img.url }}" width="312" height="350"
+          alt="{{p.product_name}}" class="image-contain">
+        {% endif %}
+        <div class="card-badge">New</div>
+      </figure>
+      <div class="card-content">
+        <h3 class="h3 card-title">
+          <a>{{p.product_name}}</a>
+        </h3>
+          <div class="card-cat">
+          <p class="card-cat-link">{{p.product_info}}</p>
+        </div>
+        <data class="card-price">$ {{p.product_price}}</data><br>
+<!--        <data class="card-price">{{p.create_time}}</data><br>-->
+<!--        <data class="card-price">{{p.edit_time}}</data><br>-->
+      </div>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}
+
+
+
+

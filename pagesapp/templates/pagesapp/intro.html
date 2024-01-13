@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    a{
+        text-decoration: none;
+        color: #3498db;
+    }
+    .logo{
+        margin: 15px;
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    span{
+        font-size: 30px;
+    }
+    .right{
+        margin-right:20px;
+        padding-top: 5px;
+    }
+    .btn{
+        cursor: pointer;
+        padding: 9px 18px;
+        margin: 10px 8px 0px 8px;
+        border-radius: 50px;
+        background-color: #fff;
+        color: #3498db;
+        border: 2px solid #3498db;
+    }
+    .btn:hover {
+        background-color: #3498db;
+        color: #fff;
+        transition: ease-in-out 0.6s;
+    }
+    a:hover{
+        color:#fff ;
+    }
+    .info{
+        padding: 115px;
+        text-align: center;
+    }
+</style>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><span>Apple UZB</span> 
+            <div class="right">
+                <a class="btn" href="{% url 'login' %}">Log In</a>
+                <a class="btn" href="{% url 'register' %}">Sign Up</a>
+            </div>
+        </div>
+        </nav>
+    </header>
+      <h2 class="info">Apple UZB web sahifasiga xush kelibsiz!</h2>
+</body>
+</html>
